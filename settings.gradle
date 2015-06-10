@@ -1,0 +1,3 @@
+include 'spring-boot-docker-properties'
+
+include 'example'

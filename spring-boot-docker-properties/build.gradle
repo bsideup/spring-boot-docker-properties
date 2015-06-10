@@ -1,0 +1,23 @@
+apply plugin: 'maven'
+apply plugin: 'com.jfrog.bintray'
+
+dependencies {
+    compile 'com.github.docker-java:docker-java'
+
+    provided "org.springframework.boot:spring-boot-starter"
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'sources'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourceJar
+    archives javadocJar
+}
